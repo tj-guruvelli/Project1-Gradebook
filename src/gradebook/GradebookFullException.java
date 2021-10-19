@@ -1,9 +1,19 @@
+/*
+ * Assignment Name: Project 1
+ * @author Teja Guruvelli
+ */
+
 package gradebook;
 
-public class GradebookFullException {
+
+@SuppressWarnings("serial")
+public class GradebookFullException extends Exception{
 
 	public GradebookFullException() {
-		// TODO Auto-generated constructor stub
+	}
+
+	public GradebookFullException(String message) {
+		super(message);
 	}
 
 }

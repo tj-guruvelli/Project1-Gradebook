@@ -1,6 +1,12 @@
+/*
+ * Assignment Name: Project 1
+ * @author Teja Guruvelli
+ */
+
 package gradebook;
 
-import java.time.LocalDateTime;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 
 public class Quiz implements AssignmentInterface{
@@ -11,7 +17,7 @@ public class Quiz implements AssignmentInterface{
 	private int score;
 	private String name;
 	private String letter;
-	private LocalDateTime dueDate;
+	private String dueDate;
 		
 	// Constructors
 	public Quiz()
@@ -22,7 +28,7 @@ public class Quiz implements AssignmentInterface{
 		name = "";
 	}
 		
-	public Quiz(int numQuestions, int score, String letter, String name, LocalDateTime dueDate)
+	public Quiz(int numQuestions, int score, String letter, String name, String dueDate)
 	{
 		this.numQuestions = numQuestions;
 		this.score = score;
@@ -36,7 +42,15 @@ public class Quiz implements AssignmentInterface{
 	public void setNumQuestions(int numQuestions) {this.numQuestions = numQuestions;}
 	public void printQuizQuesAverage(ArrayList<AssignmentInterface> array)
 	{
-		System.out.println(array);
+		System.out.println("Quiz Questions Average: ");
+		double sum = 0.0;
+		for (int i = 0; i < array.size(); i++) {
+			sum += ((Quiz) array.get(i)).getNumQuestions();
+		}
+		double qAvg = sum / array.size();
+		BigDecimal bd = new BigDecimal(qAvg).setScale(2, RoundingMode.HALF_UP);
+		double fixedqAvg = bd.doubleValue();
+		System.out.println("Average: " + fixedqAvg);
 	}
 
 
@@ -46,7 +60,17 @@ public class Quiz implements AssignmentInterface{
 	public void setLetter(String c) {letter = c;}
 	public String getName() {return name;}
 	public void setName(String s) {name = s;}
-	public LocalDateTime getDueDate() {return dueDate;}
-	public void setDueDate(LocalDateTime t) {dueDate = t;}
+	public String getDueDate() {return dueDate;}
+	public void setDueDate(String t) {dueDate = t;}
+	public String toString()
+	{
+		//"Name: " + Quiz1, Score: 90, Letter: A, Due: 09/15/21 ...”
+		System.out.println("Number of Questions: " + getNumQuestions() + "," +
+						   "Name: " + getName() + "," +
+						   "Score: " + getScore() + "," +
+						   "Letter: " + getLetter() + "," +
+						   "Due Date: " + getDueDate());
+		return " ";
+	}
 
 }

@@ -15,8 +15,8 @@ public interface AssignmentInterface {
 		 String getName();
 		 void setName(String s);
 
-		 LocalDateTime getDueDate();
-		 void setDueDate(LocalDateTime t);
+		 String getDueDate();
+		 void setDueDate(String t);
 		
 		String toString();
 

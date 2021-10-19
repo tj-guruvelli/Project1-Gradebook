@@ -1,6 +1,11 @@
+/*
+ * Assignment Name: Project 1
+ * @author Teja Guruvelli
+ */
+
 package gradebook;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Program implements AssignmentInterface{
 	
@@ -10,7 +15,7 @@ public class Program implements AssignmentInterface{
 	private int score;
 	private String name;
 	private String letter;
-	private LocalDateTime dueDate;
+	private String dueDate;
 			
 	// Constructors
 	public Program()
@@ -21,7 +26,7 @@ public class Program implements AssignmentInterface{
 		name = "";
 	}
 			
-	public Program(String conceptType, int score, String letter, String name, LocalDateTime dueDate)
+	public Program(String conceptType, int score, String letter, String name, String dueDate)
 	{
 		this.conceptType = conceptType;
 		this.score = score;
@@ -33,9 +38,14 @@ public class Program implements AssignmentInterface{
 	// Methods
 	public String getConceptType() {return conceptType;}
 	public void setConceptType(String conceptType) {this.conceptType = conceptType;}
-	public void printProgramConcept(AssignmentInterface array)
+	public void printProgramConcepts(ArrayList<AssignmentInterface> array)
 	{
-		System.out.println(array);
+		System.out.println("Content of Program Concepts: ");
+		String content;
+		for (int i = 0; i < array.size(); i++) {
+			content = ((Program) array.get(i)).getConceptType();
+			System.out.println(content);
+		}
 	}
 
 
@@ -45,15 +55,17 @@ public class Program implements AssignmentInterface{
 	public void setLetter(String c) {letter = c;}
 	public String getName() {return name;}
 	public void setName(String s) {name = s;}
-	public LocalDateTime getDueDate() {return dueDate;}
-	public void setDueDate(LocalDateTime t) {dueDate = t;}
+	public String getDueDate() {return dueDate;}
+	public void setDueDate(String t) {dueDate = t;}
 	public String toString()
 	{
 		//"Name: " + Quiz1, Score: 90, Letter: A, Due: 09/15/21 ...”
-		System.out.println("Name: " + name, 
-						   "Score: " + score,
-						   "Letter: " + letter, 
-						   "Due: " + dueDate);
+		System.out.println("Concept Type: " + getConceptType() + "," +
+						   "Name: " + getName() + "," +
+						   "Score: " + getScore() + "," +
+						   "Letter: " + getLetter() + "," +
+						   "Due Date: " + getDueDate());
+		return " ";
 	}
 
 }

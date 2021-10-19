@@ -1,9 +1,18 @@
+/*
+ * Assignment Name: Project 1
+ * @author Teja Guruvelli
+ */
+
 package gradebook;
 
-public class InvalidGradeException {
+@SuppressWarnings("serial")
+public class InvalidGradeException extends Exception{
 
 	public InvalidGradeException() {
-		// TODO Auto-generated constructor stub
+	}
+
+	public InvalidGradeException(String message) {
+		super(message);
 	}
 
 }

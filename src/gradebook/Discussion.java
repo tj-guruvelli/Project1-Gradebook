@@ -1,6 +1,11 @@
+/*
+ * Assignment Name: Project 1
+ * @author Teja Guruvelli
+ */
+
 package gradebook;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Discussion implements AssignmentInterface {
 
@@ -9,7 +14,7 @@ public class Discussion implements AssignmentInterface {
 	private int score;
 	private String name;
 	private String letter;
-	private LocalDateTime dueDate;
+	private String dueDate;
 	
 	// Constructors
 	public Discussion()
@@ -20,7 +25,7 @@ public class Discussion implements AssignmentInterface {
 		name = "";
 	}
 	
-	public Discussion(String correspondReading, int score, String letter, String name, LocalDateTime dueDate)
+	public Discussion(String correspondReading, int score, String letter, String name, String dueDate)
 	{
 		this.correspondReading = correspondReading;
 		this.score = score;
@@ -33,8 +38,13 @@ public class Discussion implements AssignmentInterface {
 	public String getCorrespondReading() {return correspondReading;}
 	public void setCorrespondReading(String setRead) {correspondReading = setRead;}
 
-	public void printCorrespondReadings(AssignmentInterface array) {
-		System.out.println(array);
+	public void printCorrespondReadings(ArrayList<AssignmentInterface> array) {
+		System.out.println("Content of Corresponding Readings: ");
+		String content;
+		for (int i = 0; i < array.size(); i++) {
+			content = ((Discussion) array.get(i)).getCorrespondReading();
+			System.out.println(content);
+		}
 	}
 
 	
@@ -44,8 +54,18 @@ public class Discussion implements AssignmentInterface {
 	public void setLetter(String c) {letter = c;}
 	public String getName() {return name;}
 	public void setName(String s) {name = s;}
-	public LocalDateTime getDueDate() {return dueDate;}
-	public void setDueDate(LocalDateTime t) {dueDate = t;}
+	public String getDueDate() {return dueDate;}
+	public void setDueDate(String t) {dueDate = t;}
+	public String toString()
+	{
+		//"Name: " + Quiz1, Score: 90, Letter: A, Due: 09/15/21 ...”
+		System.out.println("Corresponding Reading: " + getCorrespondReading() + "," +
+						   "Name: " + getName() + "," +
+						   "Score: " + getScore() + "," +
+						   "Letter: " + getLetter() + "," +
+						   "Due Date: " + getDueDate());
+		return " ";
+	}
 
 	
 	
